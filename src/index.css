@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-brand-bg: #f8f8f6;
+  --color-brand-bg-secondary: #f1f1ee;
+  --color-brand-text: #111111;
+  --color-brand-accent: #8e9299;
+  --color-brand-glow: rgba(142, 146, 153, 0.15);
+  
+  --radius-brand: 24px;
+  --radius-brand-lg: 32px;
+
+  --animate-shimmer: shimmer 5s linear infinite;
+
+  @keyframes shimmer {
+    to {
+      background-position: 200% center;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased selection:bg-brand-text selection:text-brand-bg;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-attachment: fixed;
+    background-size: 200px;
+    opacity: 0.98;
+    scrollbar-gutter: stable;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-white/40 backdrop-blur-2xl border border-white/30 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)] transition-all duration-500 ease-in-out;
+  }
+  
+  .glass-premium {
+    @apply bg-white/60 backdrop-blur-3xl border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-all duration-500 ease-in-out;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-text via-brand-accent to-brand-text bg-[length:200%_auto] animate-shimmer;
+  }
+
+  .shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
+  }
+}
