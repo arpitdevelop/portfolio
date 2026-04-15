@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import { Home } from './pages/Home';
 import { Projects } from './pages/Projects';
@@ -21,7 +21,7 @@ export default function App() {
   }, []);
 
   return (
-    <Router>
+    <HashRouter>
       <div className="min-h-screen bg-brand-bg selection:bg-brand-text selection:text-brand-bg relative">
         <Background />
         <AnimatePresence mode="wait">
@@ -35,6 +35,6 @@ export default function App() {
         </AnimatePresence>
         <BottomNav />
       </div>
-    </Router>
+    </HashRouter>
   );
 }
